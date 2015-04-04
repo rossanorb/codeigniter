@@ -1,14 +1,8 @@
 <?php
 
-class Welcome extends Controller {
+class Home extends Controller {
 
-	function Welcome()
-	{
-		parent::Controller();	
-	}
-	
-	function index()
-	{
+	function index(){
 		$this->load->view('welcome_message');
 	}
 }
