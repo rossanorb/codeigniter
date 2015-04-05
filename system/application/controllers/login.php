@@ -3,10 +3,10 @@
 class Login extends Controller {
     
     public function index(){
-        $html['header'] = $this->load->view('site/header',"",TRUE);
-        $html['body'] = $this->load->view('admin/login',"",TRUE);
-        $html['footer']= $this->load->view('site/footer',"",TRUE);
-        $this->load->view('layouts/home',$html);        
+        $this->load->helper('html');
+        $html['css'] =  link_tag(CSS.'login.css');
+        $html['body'] = $this->load->view('admin/login',"",TRUE);        
+        $this->load->view('layouts/home',$html);
     }
     
 }
