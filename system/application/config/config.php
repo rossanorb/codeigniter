@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://rossano.url.ph/";
+$config['base_url']	= sprintf('http://%s%s', $_SERVER['HTTP_HOST'], dirname($_SERVER['SCRIPT_NAME']));
 
 /*
 |--------------------------------------------------------------------------

@@ -2,8 +2,11 @@
 
 class Home extends Controller {
 
-	function index(){
-		$this->load->view('welcome_message');
+	public function index(){
+            $html['header'] = $this->load->view('site/header',"",TRUE);
+            $html['body'] = $this->load->view('site/main',"",TRUE);
+            $html['footer']= $this->load->view('site/footer',"",TRUE);
+            $this->load->view('layouts/home',$html);
 	}
 }
 

@@ -1,0 +1,60 @@
+#assinatura{    
+    padding-top: 80%;
+}
+
+.container{
+    max-width: 966px;
+    //background-color: antiquewhite;
+}
+
+nav#main_menu {
+    border-top: solid #000000 1px;
+    border-bottom: solid #000000 1px;
+    font-family:GillSans-Bold,GillSans,'Trebuchet MS',Verdana;
+}
+
+#main_menu .nav > li > a {
+    font-size:1.4em;
+    color:#000000;    
+    padding-top: 5px;
+    padding-bottom: 5px;    
+}
+
+.col-xs-12.texto{
+    color:red;
+    text-align: right;
+    margin-top: -39px;
+    padding-right: 24px;
+    width: 100%;
+}
+
+p{
+    font-family:GillSans-Bold,GillSans,'Trebuchet MS',Verdana;
+    font-size:1.4em;
+    color:#000000;
+}
+
+
+#myCarousel{
+    margin-top: 10px;
+}
+
+.carousel-inner > .item > img {
+    margin: 0 auto;         
+}
+
+
+
+.col-xs-12.icones{
+    padding: 10px;
+}
+
+footer img{    
+    margin-right: 2%;
+}
+
+.carousel-control.right, .carousel-control.left {
+    background-image:none;
+}
+
+
