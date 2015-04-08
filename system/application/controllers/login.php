@@ -24,7 +24,7 @@ class Login extends Controller {
                   echo $this->session->userdata('email');
                   redirect('/autenticado');
               }else{                  
-                  $data['error']="e-mail ou password incorreto";
+                  $data['error']="e-mail ou senha incorreta";
                   $html['body'] = $this->load->view('admin/login',$data,TRUE);
                   $this->load->view('layouts/home',$html);
               }                
