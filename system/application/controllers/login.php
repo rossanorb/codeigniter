@@ -20,8 +20,7 @@ class Login extends Controller {
                 $this->load->view('layouts/home',$html);
           }else{
               $this->load->model('usuarios');
-              if($this->usuarios->authenticate($_POST['email'], dohash($_POST['password'])) ){
-                  echo $this->session->userdata('email');
+              if($this->usuarios->authenticate($_POST['email'], dohash($_POST['password'])) ){                  
                   redirect('/autenticado');
               }else{                  
                   $data['error']="e-mail ou senha incorreta";
