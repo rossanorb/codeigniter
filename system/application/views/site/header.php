@@ -1,7 +1,7 @@
 <header class="row">
     <div class="row">
         <div class="col-xs-12">
-            <img class="img-responsive" src="/assets/imagens/alt_artes.png" alt="alt artes" width="268" height="156"  align="left">
+            <img class="img-responsive" src="<?php echo IMAGENS.'alt_artes.png'?>" alt="alt artes" width="268" height="156"  align="left">
             <div class="col-xs-12 texto" ><p>por fábio alt</p></div>
         </div>
 
