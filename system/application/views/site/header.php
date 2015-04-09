@@ -11,25 +11,13 @@
 
             <nav id="main_menu">
                 <ul class="nav nav-justified">
-
+                    <li><a href="#">home</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">home </a>
+                        <a href="#"  data-toggle="dropdown" role="button">autoral </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">autoral </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">categoria 1</a></li>
+                            <li><a href="#">categoria 2</a></li>
+                            <li><a href="#">categoria 3</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
