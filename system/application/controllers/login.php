@@ -6,7 +6,7 @@ class Login extends Controller {
         $this->load->helper('html');
         $this->load->helper('security');
         
-        $html['css'] =  link_tag(CSS.'login.css');
+        $html['css'] =  array(link_tag(CSS.'login.css'));        
 
         if(!isset($_POST['email'])){ // verifica se é post
            $html['body'] = $this->load->view('admin/login',"",TRUE);
