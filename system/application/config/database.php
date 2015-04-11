@@ -39,12 +39,10 @@ $active_group = "default";
 $active_record = TRUE;
 
 if( $env == 'development' ){
-    include_once('db_prod.inc.php');
-}else{
-$db['default']['hostname'] = "mysql.hostinger.com.br";
-$db['default']['username'] = "u115582859_alt";
-$db['default']['password'] = "Hxn2r46hxx";
-$db['default']['database'] = "u115582859_atl";
+$db['default']['hostname'] = "localhost";
+$db['default']['username'] = "root";
+$db['default']['password'] = "";
+$db['default']['database'] = "alt_artes";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = TRUE;
@@ -52,7 +50,9 @@ $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = "";
 $db['default']['char_set'] = "utf8";
-$db['default']['dbcollat'] = "utf8_general_ci";    
+$db['default']['dbcollat'] = "utf8_general_ci";
+}else{
+  include_once('db_prod.inc.php');
 }
 
 /* End of file database.php */
