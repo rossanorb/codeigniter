@@ -14,3 +14,10 @@
 
 /* End of file hooks.php */
 /* Location: ./system/application/config/hooks.php */
+$hook['post_controller_constructor'][] = array(
+ 'class' => 'Auth',
+ 'function' => 'validaLogin',
+ 'filename' => 'auth.php',
+ 'filepath' => 'hooks' 
+ );
+
