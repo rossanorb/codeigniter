@@ -33,10 +33,25 @@
 | The $active_record variables lets you determine whether or not to load
 | the active record class
 */
+$env = strtolower(getenv('APPLICATION_ENV'));
 
 $active_group = "default";
 $active_record = TRUE;
 
+if( $env == 'development' ){
+$db['default']['hostname'] = "localhost";
+$db['default']['username'] = "root";
+$db['default']['password'] = "";
+$db['default']['database'] = "alt_artes";
+$db['default']['dbdriver'] = "mysql";
+$db['default']['dbprefix'] = "";
+$db['default']['pconnect'] = TRUE;
+$db['default']['db_debug'] = TRUE;
+$db['default']['cache_on'] = FALSE;
+$db['default']['cachedir'] = "";
+$db['default']['char_set'] = "utf8";
+$db['default']['dbcollat'] = "utf8_general_ci";
+}else{
 $db['default']['hostname'] = "mysql.hostinger.com.br";
 $db['default']['username'] = "u115582859_alt";
 $db['default']['password'] = "Hxn2r46hxx";
@@ -48,8 +63,8 @@ $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = "";
 $db['default']['char_set'] = "utf8";
-$db['default']['dbcollat'] = "utf8_general_ci";
-
+$db['default']['dbcollat'] = "utf8_general_ci";    
+}
 
 /* End of file database.php */
 /* Location: ./system/application/config/database.php */
