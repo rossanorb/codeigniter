@@ -93,7 +93,8 @@ define('BASEPATH', $system_folder.'/');
 define('CSS','assets/css/');
 define('IMAGENS','assets/imagens/');
 define('FONTAWESOME','assets/font-awesome/css/');
-
+define('JS','assets/js/');
+define('PLUGINS','assets/plugins/');
 
 if (is_dir($application_folder))
 {
