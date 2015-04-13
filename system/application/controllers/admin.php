@@ -7,10 +7,9 @@ class Admin extends Controller{
          $this->load->helper('html');
         
          if( isset($_POST['tipo']) && isset($_POST['nome']) ){
-             
-            if($_POST['tipo'] != NULL &&  $_POST['tipo'] != 0 ){
-                
-               
+            if($_POST['tipo'] != NULL &&  $_POST['tipo'] != 0 && $_POST['nome'] != NULL){                
+                $this->load->model('menu');
+                $this->menu->add($_POST['tipo'], $_POST['nome']);
             }
              
          }
@@ -21,9 +20,18 @@ class Admin extends Controller{
                
             }                     
          }
-
+        
+         //select tipo menu
+         $this->load->model('tipo');
+         $html['select'] = $this->tipo->get();
+         
+         // lista menu/categoria
+         $this->load->model('menu');
+         $html['lista_menu'] =$this->menu->get();
+         
+         
         $html['css'] =  array(link_tag(CSS.'admin.css'));               
-        $html['body'] = $this->load->view('admin/main',"",TRUE);        
+        $html['body'] = $this->load->view('admin/main',$html,TRUE);
         $this->load->view('layouts/home',$html);        
          
     }
