@@ -3,7 +3,7 @@
 class Auth{
     public function validaLogin(){
         $classes = array(
-                'Autenticado',
+                'Admin',
             );
         
         $CI =& get_instance(); 
@@ -17,7 +17,7 @@ class Auth{
         }
         
         if($classe == 'Login' && $CI->session->userdata('authenticate')){
-            redirect('/autenticado'); 
+            redirect('/admin'); 
         }
     }
 }

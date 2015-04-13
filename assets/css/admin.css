@@ -1,0 +1,48 @@
+.container-fluid.admin{
+    padding-top: 25px;
+}
+
+#painel{
+    padding-top: 5px;
+}
+
+input.menu_name{
+    border: none;
+    background: white;
+    color: gray;
+}
+
+input.menu_name.editable {
+    color: #000;    
+  // border: 1px solid #ddd;
+}
+
+.list-group-item > .excluir,.editar, .adicionar {
+    float: right;
+    cursor: pointer;
+}
+
+.editar {
+  font-size: 11px;
+  line-height: 0;
+  padding: 9px;
+  text-align: center;
+  color: #d0940a;
+}
+
+.excluir {
+  font-size: 11px;
+  line-height: 0;
+  padding: 9px;
+  text-align: center;
+  color:#ff0000;
+}
+
+
+.adicionar {
+  font-size: 11px;
+  line-height: 0;
+  padding: 9px;
+  text-align: center;
+  color:#009999;
+}
