@@ -3,37 +3,43 @@
 class Admin extends Controller{
     
     public function index(){
-        //header ('Content-type: text/html; charset=UTF-8');
-         $this->load->helper('html');
+        //header ('Content-type: text/html; charset=UTF-8');        
+        $this->load->helper('html');
+        $this->load->model('menu');
+        $this->load->model('categoria');
         
-         if( isset($_POST['tipo']) && isset($_POST['nome']) ){
+        if( isset($_POST['tipo']) && isset($_POST['nome']) ){
             if($_POST['tipo'] != NULL &&  $_POST['tipo'] != 0 && $_POST['nome'] != NULL){                
-                $this->load->model('menu');
-                $this->menu->add($_POST['tipo'], $_POST['nome']);
+                $id = $this->menu->add($_POST['tipo'], $_POST['nome']);
+                $this->categoria->insert($id,$_POST['nome']);
             }
              
-         }
-                  
-         if(isset($_POST['edit'])){
-            if( sizeof($_POST['edit']) > 0 ){
-                echo 'insere no banco';
-               
-            }                     
-         }
+        }
+         
+         // atualiza menu
+        if(isset($_POST['edit']) && sizeof($_POST['edit']) > 0 ){
+                $this->menu->update($_POST);
+        }
         
          //select tipo menu
-         $this->load->model('tipo');
-         $html['select'] = $this->tipo->get();
+        $this->load->model('tipo');
+        $html['select'] = $this->tipo->get();
          
          // lista menu/categoria
-         $this->load->model('menu');
-         $html['lista_menu'] =$this->menu->get();
+        $this->load->model('menu');
+        $html['lista_menu'] =$this->menu->get();
          
-         
-        $html['css'] =  array(link_tag(CSS.'admin.css'));               
+        $html['javascripts'] =  array(JS.'modal.js',JS.'admin.js'); 
+        $html['css'] =  array(link_tag(CSS.'admin.css'));
+        $html['modal'] = $this->load->view('partials/modal',"",TRUE);
         $html['body'] = $this->load->view('admin/main',$html,TRUE);
         $this->load->view('layouts/home',$html);        
          
+    }
+    
+    public function delete($id){
+       $this->load->model('menu');
+       $this->menu->delete($id);
     }
 }
 

@@ -11,19 +11,14 @@
         <link rel="icon" href="<?php echo base_url().IMAGENS.'favicon.ico' ?> ">        
 
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo base_url().FONTAWESOME.'font-awesome.css'?>" type="text/css">  
-        
-        
+        <link rel="stylesheet" href="<?php echo base_url().FONTAWESOME.'font-awesome.css'?>" type="text/css">
         <?php
-       //plugins css
-        
+       //plugins css        
         if(isset($plugins['css']) && sizeof($plugins['css']) > 0 ):
             foreach ($plugins['css'] as  $plugins_css ) echo " $plugins_css \n ";
         endif;
-        ?>
-       
-        <link href="<?php echo base_url().CSS.'alt_artes.css'?>" rel="stylesheet" type="text/css">
-        
+        ?>       
+        <link href="<?php echo base_url().CSS.'alt_artes.css'?>" rel="stylesheet" type="text/css">        
         <?php
         //css por página
         if(isset($css) && sizeof($css) > 0 ):
@@ -32,8 +27,7 @@
         ?>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>        
         <?php
        //plugins  javascript      
         if(isset($plugins['js']) && sizeof($plugins['js']) > 0 ):
@@ -41,9 +35,11 @@
         endif;
         ?>        
         
-        <?php // javascripts por página
+        <?php // javascripts por página        
         if( isset($javascripts) && sizeof($javascripts)>0 ):
-            foreach ($javascripts as $js ) echo $js;
+                foreach ($javascripts as $js ):?>         
+        <script type="text/javascript" src="<?php echo base_url(). $js ?>"></script>
+        <?php   endforeach;    
         endif;
         ?>        
 

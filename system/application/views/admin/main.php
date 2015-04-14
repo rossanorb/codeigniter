@@ -1,3 +1,4 @@
+<?php echo $modal ?>
 <div class="container-fluid admin">
     <div class="row"  id="menu">
         <div class="cols-xs-12">
@@ -45,60 +46,29 @@
                                                                'value'       => $menu->nome,
                                                                'disabled'    => 'disabled',
                                                                'class'       =>'menu_name',
-                                                               'maxlength'   => '100',
-                                                               'size'        => '50',                                                                       
+                                                               'maxlength'   => '50',
+                                                               'size'        => '60',                                                                       
                                                  );                                
                                                 echo form_input($data);
                                             ?>
-<!--                                            <input type="text" value="home" name="edit[1]" class="menu_name " disabled="disabled" id="1">        -->
-                                                
-                                                <span class="glyphicon glyphicon glyphicon-plus adicionar "> </span>                                                 
-                                                <span class="glyphicon glyphicon glyphicon-pencil editar"> </span>                                          
-                                                <span class="glyphicon glyphicon-trash excluir "> </span>
-                                                
+                                            <span class="glyphicon glyphicon-trash excluir "> </span>
+                                            <span class="glyphicon glyphicon glyphicon-pencil editar"> </span>                                            
+                                            <?php if($menu->id_tipo == 2):?>
+                                            <span class="glyphicon glyphicon glyphicon-plus adicionar "> </span>
+                                            <?php endif ;?>                                            
                                         </li>
-<!--                                            <li class="list-group-item">asd asda sda 
-                                                 <span class="glyphicon glyphicon glyphicon-plus editar "> </span>
-                                                 <span class="glyphicon glyphicon-trash excluir "> </span>
-                                                 <span class="glyphicon glyphicon glyphicon-pencil adicionar"> </span>
-                                             </li>-->
-                        <?php 
-                                endforeach;                                
-                        else: 
+                        <?php
+                                endforeach;
+                            else:
                         ?>
-                            <li class="list-group-item">                    
-                                Nenhum menu cadastrado.
-                            </li>                        
-                        <?php endif; ?>
+                                        <li class="list-group-item">                    
+                                            <p>Nenhum menu cadastrado.</p>
+                                        </li>                        
+                      <?php endif; ?>
                     </ul>
-                    <button class="btn btn-default" type="submit">Salvar Alterações</button>
+                <button class="btn btn-default" type="submit">Salvar Altera&ccedil;&otilde;es</button>
                 </form>
             </div>
         </div>
     </div>       
 </div>
-<script>
-    $('.glyphicon.editar').click(function () {
-        var input = $(this).parent('li').find('input');
-        console.log(input)
-
-        input.addClass('editable');
-        input.removeAttr('disabled');
-    });
-
-    $('.glyphicon.adicionar').click(function () {
-        alert('adicionar');
-    });
-
-    $('.glyphicon.excluir').click(function () {
-        alert('excluir');
-    });
-
-
-</script> 
-<?php
-    if(isset($_POST['edit'])){
-        foreach ($_POST['edit'] as $id => $name)
-            echo "$id - $name <br>";
-    }
-?>
