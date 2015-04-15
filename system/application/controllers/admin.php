@@ -9,16 +9,26 @@ class Admin extends Controller{
         $this->load->model('categoria');
         
         if( isset($_POST['tipo']) && isset($_POST['nome']) ){
-            if($_POST['tipo'] != NULL &&  $_POST['tipo'] != 0 && $_POST['nome'] != NULL){                
-                $id = $this->menu->add($_POST['tipo'], $_POST['nome']);
-                $this->categoria->insert($id,$_POST['nome']);
-            }
-             
+            if($_POST['tipo'] != NULL &&  $_POST['tipo'] != 0 && $_POST['nome'] != NULL){
+                if($_POST['tipo'] == 2){
+                    $id = $this->menu->add($_POST['tipo'], $_POST['nome']); // insere apenas no menu, deixa para adicionar categoria em outro tela
+                }else{
+                    $id = $this->menu->add($_POST['tipo'], $_POST['nome']); // adiciona no menu e na categoria , não possui categoria.
+                    $this->categoria->insert($id,$_POST['nome']);
+                }
+            }             
         }
          
          // atualiza menu
         if(isset($_POST['edit']) && sizeof($_POST['edit']) > 0 ){
-                $this->menu->update($_POST);
+                $tipo = $this->menu->getTipo($_POST['edit']);
+                if($tipo == 'menu'){
+                    $this->menu->update($_POST);                    
+                }else{
+                    $this->menu->update($_POST);
+                    $this->categoria->update($_POST);
+                }
+                
         }
         
          //select tipo menu

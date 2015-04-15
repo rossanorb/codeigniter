@@ -2,7 +2,7 @@
 
 class Menu extends Model{
     
-    protected $name = 'Menu';
+    protected $name = 'menu';
 
 
     public function __construct() {
@@ -22,24 +22,36 @@ class Menu extends Model{
         }
     }
     
-    public function get(){        
+    public function get(){
         $query = $this->db->get($this->name);
         return $query->result();        
     }
     
+    public function getTipo($post){        
+        $id = array_keys($post);
+        $this->db->select('tipo.id_tipo as id_tipo, tipo.nome');        
+        $this->db->from($this->name);
+        $this->db->join('tipo','tipo.id_tipo = menu.id_tipo');
+        $this->db->where('id_menu', $id[0]);        
+        $query = $this->db->get();
+        
+
+        return $query->result()[0]->nome;
+                
+    }
+    
     public function update(array $dados){
-            foreach ($dados['edit'] as $id => $name){             
+            foreach ($dados['edit'] as $id => $name){
                 $data = array(
                     'nome' => $name
                 );                
                 $this->db->where('id_menu', $id);
-                $this->db->update($this->name, $data);                
+                $this->db->update($this->name, $data);
             }
     }
     
     
     public function delete($id){
-       
                         
         $this->db->select('fotografias.id_fotografias, menu.id_menu, menu.nome as nome_menu, categoria.id_categoria,categoria.nome as nome_categoria, fotografias.src');
         $this->db->from('menu');
