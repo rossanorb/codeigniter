@@ -40,8 +40,7 @@ class Admin extends Controller{
         $html['lista_menu'] =$this->menu->get();
          
         $html['javascripts'] =  array(JS.'modal.js',JS.'admin.js'); 
-        $html['css'] =  array(link_tag(CSS.'admin.css'));
-        $html['modal'] = $this->load->view('partials/modal',"",TRUE);
+        $html['css'] =  array(link_tag(CSS.'admin.css'));        
         $html['body'] = $this->load->view('admin/main',$html,TRUE);
         $this->load->view('layouts/home',$html);        
          
