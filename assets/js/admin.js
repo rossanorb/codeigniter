@@ -1,3 +1,20 @@
+function getContentModal(data){
+        $('#content-modal').html(data['gerencia_categoria']);
+
+        $('#bt_categoria').bind('click',function(){
+            adicionar_categoria(data);                    
+        });
+
+        $('.editar_categoria').bind('click',function(){
+            //editar_categoria();
+        });
+
+        $('.excluir_categoria').bind('click',function(){
+            id_menu = data['id'];
+            //exluir_categoria();
+        });    
+}
+
 function adicionar_categoria(data){
         $.ajax({
             dataType : 'json',
@@ -8,20 +25,7 @@ function adicionar_categoria(data){
                 nome: $('#txt_nome_categoria').val()
             },
             success : function(data){
-                $('#content-modal').html(data['gerencia_categoria']);
-                                
-                $('#bt_categoria').bind('click',function(){
-                    adicionar_categoria(data);                    
-                });
-                                
-                $('.editar_categoria').bind('click',function(){
-                    //editar_categoria();
-                });
-                
-                $('.excluir_categoria').bind('click',function(){
-                    id_menu = data['id'];
-                    //exluir_categoria();
-                });
+                getContentModal(data);
             }
         });    
 }
@@ -49,21 +53,7 @@ $(document).ready(function(){
                 id : id
             },
             success : function(data){
-                $('#content-modal').html(data['gerencia_categoria']);
-                                
-                $('#bt_categoria').bind('click',function(){
-                    adicionar_categoria(data);                    
-                });
-                                
-                $('.editar_categoria').bind('click',function(){
-                    //editar_categoria();
-                });
-                
-                $('.excluir_categoria').bind('click',function(){
-                    id_menu = data['id'];
-                    //exluir_categoria();
-                });
-                
+                getContentModal(data);
             }
         });
         
