@@ -24,4 +24,13 @@ class Categoria extends Model{
                 $this->db->update($this->name, $data);
             }
     }
+    
+    public function lista($id){
+        $this->db->select('menu.id_menu as id_menu, categoria.id_categoria as id_categoria, categoria.nome as nome');
+        $this->db->from($this->name);
+        $this->db->join('menu','categoria.id_menu = menu.id_menu');
+        $this->db->where('menu.id_menu',$id);
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

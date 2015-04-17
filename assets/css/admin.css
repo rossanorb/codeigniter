@@ -3,7 +3,7 @@
 }
 
 #painel{
-    padding-top: 5px;
+    padding-top: 15px;
 }
 
 input.menu_name{
@@ -17,12 +17,12 @@ input.menu_name.editable {
   // border: 1px solid #ddd;
 }
 
-.list-group-item > .excluir,.editar, .adicionar {
+.list-group-item > .excluir_menu, .editar_menu, .adicionar_menu, .editar_categoria, .excluir_categoria  {
     float: right;
     cursor: pointer;
 }
 
-.editar {
+.editar_menu, .editar_categoria {
   font-size: 11px;
   line-height: 0;
   padding: 9px;
@@ -30,7 +30,7 @@ input.menu_name.editable {
   color: #d0940a;
 }
 
-.excluir {
+.excluir_menu, .excluir_categoria {
   font-size: 11px;
   line-height: 0;
   padding: 9px;
@@ -39,10 +39,15 @@ input.menu_name.editable {
 }
 
 
-.adicionar {
+.adicionar_menu {
   font-size: 11px;
   line-height: 0;
   padding: 9px;
   text-align: center;
   color:#009999;
+}
+
+#content-modal.row{
+    margin-left: 0px;
+    margin-right:0px;    
 }

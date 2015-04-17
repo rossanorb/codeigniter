@@ -1,4 +1,3 @@
-<?php echo $modal ?>
 <div class="container-fluid admin">
     <div class="row"  id="menu">
         <div class="cols-xs-12">
@@ -33,11 +32,9 @@
             <div class="list-group">                
                  <?php echo form_open('admin/',array('name'=>'edit_menu')); ?>  
                     <ul class="list-group">
-                        <?php if(isset($lista_menu) && sizeof($lista_menu) > 0 ): 
-                            
+                        <?php if(isset($lista_menu) && sizeof($lista_menu) > 0 ):                            
                                 foreach ($lista_menu as $menu):
-                        ?>
-                                    
+                        ?>          
                                         <li class="list-group-item">
                                             <?php
                                                 $data = array(
@@ -47,14 +44,14 @@
                                                                'disabled'    => 'disabled',
                                                                'class'       =>'menu_name',
                                                                'maxlength'   => '50',
-                                                               'size'        => '60',                                                                       
+                                                               'size'        => '60',
                                                  );                                
                                                 echo form_input($data);
                                             ?>
-                                            <span class="glyphicon glyphicon-trash excluir "> </span>
-                                            <span class="glyphicon glyphicon glyphicon-pencil editar"> </span>                                            
+                                            <span class="glyphicon glyphicon-trash excluir_menu "> </span>
+                                            <span class="glyphicon glyphicon glyphicon-pencil editar_menu"> </span>                                            
                                             <?php if($menu->id_tipo == 2):?>
-                                            <span class="glyphicon glyphicon glyphicon-plus adicionar "> </span>
+                                            <span class="glyphicon glyphicon glyphicon-plus adicionar_menu "> </span>
                                             <?php endif ;?>                                            
                                         </li>
                         <?php
@@ -71,4 +68,8 @@
             </div>
         </div>
     </div>       
+</div>
+
+
+<div id="gerenciar-categoria" class="row" style="display: block;" >
 </div>

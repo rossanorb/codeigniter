@@ -28,7 +28,6 @@ class Admin extends Controller{
                     $this->menu->update($_POST);
                     $this->categoria->update($_POST);
                 }
-                
         }
         
          //select tipo menu
@@ -42,13 +41,29 @@ class Admin extends Controller{
         $html['javascripts'] =  array(JS.'modal.js',JS.'admin.js'); 
         $html['css'] =  array(link_tag(CSS.'admin.css'));        
         $html['body'] = $this->load->view('admin/main',$html,TRUE);
-        $this->load->view('layouts/home',$html);        
-         
+        $this->load->view('layouts/home',$html);
+        
     }
     
     public function delete($id){
        $this->load->model('menu');
        $this->menu->delete($id);
+    }
+    
+    public function categoria(){
+        $html = array();
+        $this->load->helper('html');
+        $this->load->model('categoria');
+        $html['id'] = $_POST['id'];
+        $html['query'] = $this->categoria->lista($_POST['id']);        
+        $html['gerencia_categoria'] = $this->load->view('admin/gerencia_categoria',$html,TRUE);
+        echo json_encode($html);
+    }
+    
+    public function add_categoria(){
+        $this->load->model('categoria');
+        $this->categoria->insert($_POST['id'],$_POST['nome']);
+        $this->categoria();
     }
 }
 
