@@ -2,26 +2,35 @@ function getContentModal(data){
         $('#content-modal').html(data['gerencia_categoria']);
 
         $('#bt_categoria').bind('click',function(){
-            adicionar_categoria(data);                    
+            //console.log(data['query'][0]['id_menu']);
+            request(data,null,'/admin/add_categoria/');
         });
 
         $('.editar_categoria').bind('click',function(){
-            //editar_categoria();
+            
         });
 
         $('.excluir_categoria').bind('click',function(){
-            id_menu = data['id'];
-            //exluir_categoria();
+            console.log('excluir',data['id']);
+            console.log('excluir',$(this).parent('li').find('input').attr('id'));
+            
+            request(
+                data,
+                $(this).parent('li').find('input').attr('id'),
+                '/admin/delete_categoria/'
+            );
+            
         });    
 }
 
-function adicionar_categoria(data){
+function request(data,id_categoria,url){
         $.ajax({
             dataType : 'json',
-            type 	 : 'post',
-            url:  '/admin/add_categoria/',
+            type     : 'post',
+            url:  url,
             data     : {
                 id  : data['id'],
+                id_categoria : id_categoria,
                 nome: $('#txt_nome_categoria').val()
             },
             success : function(data){

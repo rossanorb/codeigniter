@@ -60,9 +60,15 @@ class Admin extends Controller{
         echo json_encode($html);
     }
     
-    public function add_categoria(){
+    public function add_categoria(){        
         $this->load->model('categoria');
         $this->categoria->insert($_POST['id'],$_POST['nome']);
+        $this->categoria();
+    }
+    
+    public function delete_categoria(){
+        $this->load->model('categoria');
+        $this->categoria->delete($_POST['id_categoria']);
         $this->categoria();
     }
 }
