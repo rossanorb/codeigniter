@@ -27,27 +27,22 @@ class Menu extends Model{
         return $query->result();        
     }
     
-    public function getTipo($post){        
-        $id = array_keys($post);
+    public function getTipo($id_menu){        
         $this->db->select('tipo.id_tipo as id_tipo, tipo.nome');        
         $this->db->from($this->name);
         $this->db->join('tipo','tipo.id_tipo = menu.id_tipo');
-        $this->db->where('id_menu', $id[0]);        
+        $this->db->where('id_menu', $id_menu);        
         $query = $this->db->get();
-        
-
         return $query->result()[0]->nome;
                 
     }
     
-    public function update(array $dados){
-            foreach ($dados['edit'] as $id => $name){
+    public function update(array $menu){            
                 $data = array(
-                    'nome' => $name
+                    'nome' => $menu['nome']
                 );                
-                $this->db->where('id_menu', $id);
-                $this->db->update($this->name, $data);
-            }
+                $this->db->where('id_menu', $menu['id_menu']);
+                $this->db->update($this->name, $data);            
     }
     
     

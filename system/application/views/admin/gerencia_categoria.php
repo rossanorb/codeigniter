@@ -14,7 +14,7 @@
         
         <div class="cols-xs-12" id="painel">
             <div class="list-group">
-                <ul class="list-group">
+                <ul class="list-group categoria">
                     <?php if(isset($query) && sizeof($query) > 0 ):
                             foreach ($query as $categoria):
                     ?>                              
@@ -44,7 +44,7 @@
                         </li>                        
                     <?php endif; ?>                    
                 </ul>
-                <button type="button" class="btn btn-default">Salvar Alterações</button>
+                <button id="editar_categoria" type="button" class="btn btn-default">Salvar Alterações</button>
             </div>            
         </div>
     </div>

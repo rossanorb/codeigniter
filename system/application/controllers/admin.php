@@ -21,13 +21,24 @@ class Admin extends Controller{
          
          // atualiza menu
         if(isset($_POST['edit']) && sizeof($_POST['edit']) > 0 ){
-                $tipo = $this->menu->getTipo($_POST['edit']);
-                if($tipo == 'menu'){
-                    $this->menu->update($_POST);                    
+            
+            foreach ($_POST['edit'] as $id_menu => $name){
+                $this->menu->update(array('id_menu'=>$id_menu, 'nome'=>$name));
+            }
+            
+            /*
+            foreach ($_POST['edit'] as $id_menu => $name){                
+                $tipo = $this->menu->getTipo( $id_menu );
+                if($tipo == 'menu'){ // se menu, possui categoria onde cada um possu seu próprio nome                    
+                    $this->menu->update(array('id_menu'=>$id_menu, 'nome'=>$name));
                 }else{
-                    $this->menu->update($_POST);
-                    $this->categoria->update($_POST);
+                    $this->menu->update(array('id_menu'=>$id_menu, 'nome'=>$name));
+
                 }
+            }
+             */
+            
+
         }
         
          //select tipo menu
@@ -60,7 +71,7 @@ class Admin extends Controller{
         echo json_encode($html);
     }
     
-    public function add_categoria(){        
+    public function add_categoria(){
         $this->load->model('categoria');
         $this->categoria->insert($_POST['id'],$_POST['nome']);
         $this->categoria();
@@ -70,6 +81,24 @@ class Admin extends Controller{
         $this->load->model('categoria');
         $this->categoria->delete($_POST['id_categoria']);
         $this->categoria();
+    }
+    
+    public function edita_categoria(){
+//        $this->categoria();
+        
+        $this->load->model('categoria');
+        $obj = json_decode($_POST['categorias']);        
+        foreach ($obj as $row){
+            $lista['edit'][$row->id_categoria] = $row->nome;
+        }
+        $this->categoria->update($lista);
+        $this->categoria();
+        
+        
+//        foreach ($obj as $row){
+//            print nl2br(" categoria: {$row->id_categoria} \n nome: {$row->nome} \n\n ");
+//        }
+
     }
 }
 

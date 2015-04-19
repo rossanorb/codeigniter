@@ -14,17 +14,17 @@ class Categoria extends Model{
                 'nome'=>$nome                
             ));        
     }
-    
-    public function update(array $dados){
-            foreach ($dados['edit'] as $id => $name){
-                $data = array(
-                    'nome' => $name
-                );                
-                $this->db->where('id_menu', $id);
-                $this->db->update($this->name, $data);
-            }
-    }
-    
+
+    public function update(array $dados) {        
+        foreach ($dados['edit'] as $id => $name) {
+            $data = array(
+                'nome' => $name
+            );
+            $this->db->where('id_'.$this->name, $id);
+            $this->db->update($this->name, $data);
+        }      
+    }    
+
     public function delete($id_categoria){
         if( filter_var($id_categoria, FILTER_VALIDATE_INT) ){
             $this->db->where('id_'.$this->name,$id_categoria)->delete($this->name);
