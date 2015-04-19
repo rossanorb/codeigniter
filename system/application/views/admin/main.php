@@ -4,7 +4,7 @@
             <div>
                 <ul class="nav nav-tabs">
                     <li class="active" role="presentation"><a href="#">Menus</a></li>
-                    <li role="presentation"><a href="#">Upload</a></li>
+                    <li role="presentation"><a href="#">Fotos</a></li>
                 </ul>
             </div>            
         </div>
