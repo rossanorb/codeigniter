@@ -18,4 +18,12 @@ class Fotos extends Controller{
         $html['body'] = $this->load->view('admin/fotos',$html,TRUE);        
         $this->load->view('layouts/home',$html);   
     }
+    
+    public function categoria(){
+        $this->load->model('categoria');
+        $query = $this->categoria->lista($_POST['id']);
+        $json['select'] = $this->load->view('admin/form/select_categoria',array('query'=>$query),TRUE);        
+        echo json_encode($json);
+    }
+    
 }

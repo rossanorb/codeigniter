@@ -32,7 +32,7 @@ class Categoria extends Model{
     }
     
     public function lista($id){
-            $this->db->select('menu.id_menu as id_menu, categoria.id_categoria as id_categoria, categoria.nome as nome');
+            $this->db->select('menu.id_menu as id_menu, categoria.id_categoria as id_categoria, categoria.nome as nome, menu.id_tipo as id_tipo');
             $this->db->from($this->name);
             $this->db->join('menu','categoria.id_menu = menu.id_menu');
             $this->db->where('menu.id_menu',$id);

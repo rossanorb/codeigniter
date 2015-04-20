@@ -31,3 +31,7 @@
     cursor: inherit;
     display: block;
 }
+
+.btn-submit{
+    margin-top: 15px;
+}

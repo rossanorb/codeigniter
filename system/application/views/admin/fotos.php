@@ -23,18 +23,20 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="menu">menu:</label> 
-                                    <select id="menu" name="tipo" class="form-control">
+                                    <select id="menu" name="menu" class="form-control">
                                         <option value="0">selecione</option>
                                         <?php  foreach($select_menu as $row):?> 
                                         <option value="<?php echo $row->id_menu; ?>"><?php echo $row->nome; ?></option>
                                         <?php endforeach;?>
-                                    </select>
-                                    <label for="menu">categoria:</label>                        
-                                    <select class="form-control" name="tipo" id="menu">
-                                        <option value="0">selecione</option>
-                                        <option value="1">categoria</option>
-                                        <option value="2">menu</option>
-                                    </select>                        
+                                    </select>                                    
+                                    <div id="select_menu">
+                                        <label for="menu">categoria:</label>
+                                        <select class="form-control" name="categoria" id="categoria">
+                                            <option value="0">selecione</option>
+                                            <option value="1">categoria</option>
+                                            <option value="2">menu</option>
+                                        </select>
+                                    </div>
                                 </div>                                    
                             </div>
 
@@ -57,8 +59,8 @@
                                 <input type="text" class="form-control" id="filename"  disabled="">
                             </div>
                     </div>
-                </div>
-                
+                    <div class="col-sm-12 btn-submit"><button type="submit" class="btn btn-default">Upload</button></div>
+                </div>                
             </div>
             </form>
             <div class="col-sm-4">
