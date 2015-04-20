@@ -26,4 +26,8 @@ class Fotos extends Controller{
         echo json_encode($json);
     }
     
+    public function upload(){
+        
+    }
+    
 }
