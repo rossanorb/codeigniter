@@ -1,0 +1,70 @@
+<div class="container">
+
+    <div class="container-fluid admin">
+
+        <div id="menu" class="row">
+            <div class="cols-xs-12">
+                <div>
+                    <ul class="nav nav-tabs">
+                        <li role="presentation"><a href="/admin/">Menus</a></li>
+                        <li role="presentation" class="active"><a href="/fotos/">Fotos</a></li>
+                    </ul>
+                </div>            
+            </div>
+        </div>
+
+        <div id="painel" class="row">
+            <?php echo form_open_multipart('fotos/upload'); ?>
+            <div class="col-sm-8">
+
+                <div class="row col-left">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="menu">menu:</label> 
+                                    <?php echo $select_menu; ?>
+
+                                    <label for="menu">categoria:</label>                        
+                                    <select class="form-control" name="tipo" id="menu">
+                                        <option value="0">selecione</option>
+                                        <option value="1">categoria</option>
+                                        <option value="2">menu</option>
+                                    </select>                        
+                                </div>                                    
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6" >
+                                Somente extensões jpg e jpeg <br>
+                                Tamanho 1250 x 750
+                            </div>
+
+                        </div>                    
+                    </div>
+                    <div class="col-sm-12">                        
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        Browse… <input type="file" multiple="" >
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" id="filename"  disabled="">
+                            </div>
+                    </div>
+                </div>
+                
+            </div>
+            </form>
+            <div class="col-sm-4">
+                <img src="" width="200" style="display:none;" />
+            </div>            
+        </div>       
+        <div class="row" id="painel_fotos" >
+            <div class="cols-xs-12">
+                The following example shows how to get two columns starting at tablets and scaling to large desktops, with another two columns (equal widths) within the larger column (at mobile phones, these columns and their nested columns will stack):                
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,8 +3,8 @@
         <div class="cols-xs-12">
             <div>
                 <ul class="nav nav-tabs">
-                    <li class="active" role="presentation"><a href="#">Menus</a></li>
-                    <li role="presentation"><a href="#">Fotos</a></li>
+                    <li class="active" role="presentation"><a href="/admin/">Menus</a></li>
+                    <li role="presentation"><a href="/fotos/">Fotos</a></li>
                 </ul>
             </div>            
         </div>

@@ -83,3 +83,11 @@ footer img{
 }
 
 .fechar{display:block; text-align:right;}
+
+.container-fluid.admin{
+    padding-top: 25px;
+}
+
+#painel{
+    padding-top: 15px;
+}

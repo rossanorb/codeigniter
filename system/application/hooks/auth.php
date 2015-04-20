@@ -3,7 +3,8 @@
 class Auth{
     public function validaLogin(){
         $classes = array(
-                'Admin',
+//                'Admin',
+//                'Fotos'
             );
         
         $CI =& get_instance(); 

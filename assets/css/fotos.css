@@ -1,0 +1,33 @@
+/* 
+    Created on : Apr 19, 2015, 3:44:55 PM
+    Author     : Rossano
+*/
+#painel_fotos{
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: solid 1px #B3B4BD;
+}
+.col-lef{
+    border:solid 1px #8B0D00;
+}
+
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
