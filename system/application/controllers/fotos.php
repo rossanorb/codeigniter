@@ -9,8 +9,7 @@ class Fotos extends Controller{
          
         // lista menu
         $this->load->model('menu');
-        $lista_menu = $this->menu->get();
-        $html['select_menu'] = $this->load->view('admin/form/select_menu',array('lista_menu'=>$lista_menu),TRUE);
+        $html['select_menu'] = $this->menu->get();        
         
 
         

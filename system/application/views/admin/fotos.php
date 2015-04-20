@@ -23,8 +23,12 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="menu">menu:</label> 
-                                    <?php echo $select_menu; ?>
-
+                                    <select id="menu" name="tipo" class="form-control">
+                                        <option value="0">selecione</option>
+                                        <?php  foreach($select_menu as $row):?> 
+                                        <option value="<?php echo $row->id_menu; ?>"><?php echo $row->nome; ?></option>
+                                        <?php endforeach;?>
+                                    </select>
                                     <label for="menu">categoria:</label>                        
                                     <select class="form-control" name="tipo" id="menu">
                                         <option value="0">selecione</option>
