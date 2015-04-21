@@ -34,36 +34,34 @@ class Fotos extends Controller{
         $this->load->library('upload',$configs);  // carrega classe upload da biblioteca
         
         if( ! $this->upload->do_upload()){
-            $this->error = array('error' => $this->upload->display_errors());
+            $this->error =  $this->upload->display_errors();
             return false;
         }else{
             $this->dados =  $this->upload->data();
-            return true;
-            //echo $arr['file_name'];
+            return true;            
         }        
     }
     
     public function upload(){
         $this->load->model('categoria');
-        $this->load->model('fotografias');        
+        $this->load->model('fotografias');
+        $retorno = array();
         
         if( $this->input->post('menu') && $this->input->post('categoria') > 0 ){
-            echo 'do upload menu<br>';
+            // menu
             if($this->do_upload()){
                 $this->fotografias->add(array(
                         'id_categoria' => $this->input->post('categoria'),
                         'src' => $this->dados['file_name']
                         ));
-                
+                $retorno['msg'] = 'upload realizado com sucesso.';
             }else{
-                echo "<pre>";
-                print_r($this->error);
-                echo "</pre>";
+                $retorno['error'] = $this->error;
             }
             
             
         }elseif($this->input->post('menu') && $this->input->post('categoria') == NULL ){
-            echo 'do upload categoria<br>';            
+            //  categoria
             if($this->do_upload()){
                 $id_categoria = $this->categoria->get_id( $this->input->post('menu') );
                 if($id_categoria){
@@ -71,17 +69,20 @@ class Fotos extends Controller{
                                 'id_categoria' => $id_categoria,
                                 'src' => $this->dados['file_name']
                             ));
+                    $retorno['msg'] = 'upload realizado com sucesso.';
                 }
-                
             }else{
-                echo "<pre>";
-                print_r($this->error);
-                echo "</pre>";
+                 $retorno['error'] = $this->error;
             }
         }else{
-            echo 'invalido';
+            $retorno['error'] = 'Nenhuma categoria selecionada para o menu ';
         }
         
+        $retorno['id_menu'] = $this->input->post('menu');
+        $retorno['id_categoria'] = $this->input->post('categoria');
+        
+        $this->session->set_flashdata('retorno', $retorno);
+        redirect('/fotos/');
     }
     
 }

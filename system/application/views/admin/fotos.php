@@ -1,9 +1,11 @@
+<?php $retorno = $this->session->flashdata('retorno');?>
+
 <div class="container">
 
     <div class="container-fluid admin">
 
         <div id="menu" class="row">
-            <div class="cols-xs-12">
+            <div class="cols-sm-12">
                 <div>
                     <ul class="nav nav-tabs">
                         <li role="presentation"><a href="/admin/">Menus</a></li>
@@ -24,18 +26,18 @@
                                 <div class="form-group">
                                     <label for="menu">menu:</label> 
                                     <select id="menu" name="menu" class="form-control">
-                                        <option value="0">selecione</option>
+                                            <option value="0">selecione</option>
                                         <?php  foreach($select_menu as $row):?> 
                                         <option value="<?php echo $row->id_menu; ?>"><?php echo $row->nome; ?></option>
                                         <?php endforeach;?>
                                     </select>                                    
                                     <div id="select_menu">
-                                        <label for="menu">categoria:</label>
+<!--                                        <label for="menu">categoria:</label>
                                         <select class="form-control" name="categoria" id="categoria">
                                             <option value="0">selecione</option>
                                             <option value="1">categoria</option>
                                             <option value="2">menu</option>
-                                        </select>
+                                        </select>-->
                                     </div>
                                 </div>                                    
                             </div>
@@ -66,9 +68,34 @@
             <div class="col-sm-4">
                 <img src="" width="200" style="display:none;" />
             </div>            
-        </div>       
+        </div>
+        <div class="row" >
+            <div class="cols-sm-12" id="mensagem" >
+                <?php
+                if( isset($retorno['error']) ):
+                    $erro = strip_tags($retorno['error']);
+                ?>
+                <span class="erro">
+                    <?php echo $erro; ?>
+                </span>                
+                <?php
+                endif;
+                ?>
+                
+                <?php
+                if( isset($retorno['msg']) ):
+                ?>
+                <span class="sucesso">
+                    <?php echo $retorno['msg']; ?>
+                </span>
+                <?php
+                endif;
+                ?>
+                
+            </div>
+        </div>
         <div class="row" id="painel_fotos" >
-            <div class="cols-xs-12">
+            <div class="cols-sm-12">
                 The following example shows how to get two columns starting at tablets and scaling to large desktops, with another two columns (equal widths) within the larger column (at mobile phones, these columns and their nested columns will stack):                
             </div>
         </div>
