@@ -96,7 +96,10 @@
         </div>
         <div class="row" id="painel_fotos" >
             <div class="cols-sm-12">
-                The following example shows how to get two columns starting at tablets and scaling to large desktops, with another two columns (equal widths) within the larger column (at mobile phones, these columns and their nested columns will stack):                
+                <div class="col-sm-12 btn-submit"><button class="btn btn-default" type="submit" style="margin-bottom: 8px;">Exibir Galeria</button></div>
+            </div>
+            <div class="cols-sm-12">
+                Utilize às combos acima, menu e categoria e clique no botão <b>Exibir Galeria</b>
             </div>
         </div>
     </div>
