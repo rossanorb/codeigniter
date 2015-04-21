@@ -40,7 +40,5 @@ define('IMAGENS','assets/imagens/');
 define('FONTAWESOME','assets/font-awesome/css/');
 define('JS','assets/js/');
 define('PLUGINS','assets/plugins/');
-define('UPLOAD_FOTOS','./uploads/');
-
 /* End of file constants.php */
 /* Location: ./system/application/config/constants.php */
