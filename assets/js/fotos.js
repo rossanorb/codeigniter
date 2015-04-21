@@ -31,7 +31,7 @@ $(document).ready(function(){
 $(document).on('change', '.btn-file :file', function() {
     var input = $(this);
     var tmppath = URL.createObjectURL(input.get(0).files[0]);
-    $("img").fadeIn("fast").attr('src',tmppath);
+    $("img#foto-upload").fadeIn("fast").attr('src',tmppath);
     $('#filename').attr('value',input.val().replace(/\\/g, '/').replace(/.*\//, ''));
 });
 
