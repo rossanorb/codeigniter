@@ -22,19 +22,13 @@
         <?php
         //css por página
         if(isset($css) && sizeof($css) > 0 ):
-            foreach ($css as  $c )  echo "$c \n ";            
+            foreach ($css as  $c )  echo "$c \n ";
         endif;
         ?>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>        
-        <?php
-       //plugins  javascript      
-        if(isset($plugins['js']) && sizeof($plugins['js']) > 0 ):
-            foreach ($plugins['js'] as  $plugins_js ) echo " $plugins_js \n ";
-        endif;
-        ?>        
-        
+       
         <?php // javascripts por página        
         if( isset($javascripts) && sizeof($javascripts)>0 ):
                 foreach ($javascripts as $js ):?>         
