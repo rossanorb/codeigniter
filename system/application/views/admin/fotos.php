@@ -52,8 +52,8 @@
                     <div class="col-sm-12">                        
                             <div class="input-group">
                                 <span class="input-group-btn">
-                                    <span class="btn btn-primary btn-file">
-                                        Browse… <input type="file" multiple="" >
+                                    <span class="btn btn-primary btn-file">                                        
+                                        Browse… <input type="file"  size="20" name="userfile" >
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" id="filename"  disabled="">

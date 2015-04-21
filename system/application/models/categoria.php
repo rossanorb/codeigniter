@@ -39,4 +39,15 @@ class Categoria extends Model{
             $query = $this->db->get();
             return $query->result();
     }
+    
+    public function get_id($id_menu){
+        if( filter_var($id_menu, FILTER_VALIDATE_INT) ){
+            $this->db->select('categoria.id_categoria as id_categoria');
+            $this->db->from($this->name);
+            $this->db->join('menu', 'menu.id_menu = categoria.id_menu');
+            $this->db->where('menu.id_menu',$id_menu);
+            $query = $this->db->get();
+            return($query->result()[0]->id_categoria);
+        }        
+    }
 }
