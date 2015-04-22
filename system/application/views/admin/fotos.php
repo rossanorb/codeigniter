@@ -1,4 +1,8 @@
-<?php $retorno = $this->session->flashdata('retorno');?>
+<?php //$retorno = $this->session->flashdata('retorno');
+//echo "<pre>";
+//print_r(@$retorno);
+//echo "</pre>";
+?>
 
 <div class="container">
 
@@ -46,7 +50,7 @@
                         <div class="row">
                             <div class="col-sm-6" >
                                 Somente extensões jpg e jpeg <br>
-                                Tamanho 1250 x 750
+                                Tamanho 966w x 648h
                             </div>
 
                         </div>                    
@@ -66,7 +70,7 @@
             </div>
             </form>
             <div class="col-sm-4">
-                <img src="" width="200" style="display:none;" />
+                <img src="" id="foto-upload" width="200" style="display:none;" />
             </div>            
         </div>
         <div class="row" >
@@ -75,9 +79,9 @@
                 if( isset($retorno['error']) ):
                     $erro = strip_tags($retorno['error']);
                 ?>
-                <span class="erro">
+                <div class="alert alert-danger" role="alert">
                     <?php echo $erro; ?>
-                </span>                
+                </div>
                 <?php
                 endif;
                 ?>
@@ -85,9 +89,9 @@
                 <?php
                 if( isset($retorno['msg']) ):
                 ?>
-                <span class="sucesso">
+                <div class="alert alert-success" role="alert">
                     <?php echo $retorno['msg']; ?>
-                </span>
+                </div>
                 <?php
                 endif;
                 ?>
@@ -95,12 +99,14 @@
             </div>
         </div>
         <div class="row" id="painel_fotos" >
-            <div class="cols-sm-12">
-                <div class="col-sm-12 btn-submit"><button class="btn btn-default" type="submit" style="margin-bottom: 8px;">Exibir Galeria</button></div>
-            </div>
-            <div class="cols-sm-12">
-                Utilize às combos acima, menu e categoria e clique no botão <b>Exibir Galeria</b>
-            </div>
+            
+                <?php
+                if(isset($gallery)){
+                    echo $gallery;
+                }
+                ?>
+                      
+            
         </div>
     </div>
 </div>
