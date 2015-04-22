@@ -4,7 +4,9 @@ class Fotos extends Controller{
     
     private $error;
     private $dados;
-
+    private $id_categoria;
+    private $id_menu;    
+    private $html = array();    
 
     public function index(){
         $this->load->helper('html');
@@ -12,12 +14,12 @@ class Fotos extends Controller{
          
         // lista menu
         $this->load->model('menu');
-        $html['select_menu'] = $this->menu->get();
+        $this->html['select_menu'] = $this->menu->get();
         
-        $html['javascripts'] = array(PLUGINS.'photo-gallery.js',JS.'fotos.js' ); 
-        $html['css'] =  array(link_tag(CSS.'fotos.css'));        
-        $html['body'] = $this->load->view('admin/fotos',$html,TRUE);        
-        $this->load->view('layouts/home',$html);   
+        $this->html['javascripts'] = array(PLUGINS.'photo-gallery.js',JS.'fotos.js' ); 
+        $this->html['css'] =  array(link_tag(CSS.'fotos.css'));        
+        $this->html['body'] = $this->load->view('admin/fotos',$this->html,TRUE);        
+        $this->load->view('layouts/home',$this->html);   
     }
     
     public function categoria(){
@@ -44,16 +46,20 @@ class Fotos extends Controller{
     public function upload(){
         $this->load->model('categoria');
         $this->load->model('fotografias');
+        $this->id_menu = $this->input->post('menu');
+        $this->id_categoria = $this->input->post('categoria');
         $retorno = array();
         
         if( $this->input->post('menu') && $this->input->post('categoria') > 0 ){
             // menu
             if($this->do_upload()){
-                $this->fotografias->add(array(
-                        'id_categoria' => $this->input->post('categoria'),
-                        'src' => $this->dados['file_name']
-                        ));
-                $retorno['msg'] = 'upload realizado com sucesso.';
+                
+                    $this->fotografias->add(array(
+                            'id_categoria' => $this->input->post('categoria'),
+                            'src' => $this->dados['file_name']
+                            ));
+                    $retorno['msg'] = 'upload realizado com sucesso.';
+                
             }else{
                 $retorno['error'] = $this->error;
             }
@@ -62,26 +68,55 @@ class Fotos extends Controller{
         }elseif($this->input->post('menu') && $this->input->post('categoria') == NULL ){
             //  categoria
             if($this->do_upload()){
-                $id_categoria = $this->categoria->get_id( $this->input->post('menu') );
-                if($id_categoria){
-                    $this->fotografias->add(array(
-                                'id_categoria' => $id_categoria,
-                                'src' => $this->dados['file_name']
-                            ));
-                    $retorno['msg'] = 'upload realizado com sucesso.';
-                }
-            }else{
-                 $retorno['error'] = $this->error;
+                $this->id_categoria = $this->categoria->get_id( $this->input->post('menu') );
+                
+                    if($this->id_categoria){
+                        $this->fotografias->add(array(
+                                    'id_categoria' => $this->id_categoria,
+                                    'src' => $this->dados['file_name']
+                                ));
+                        $retorno['msg'] = 'upload realizado com sucesso.';
+                    }
+                
             }
+                
         }else{
-            $retorno['error'] = 'Nenhuma categoria selecionada para o menu ';
+            $retorno['error'] = 'seleção dos combos menu e categoria são inválidos';
         }
         
         $retorno['id_menu'] = $this->input->post('menu');
         $retorno['id_categoria'] = $this->input->post('categoria');
+        $this->html['retorno'] = $retorno;
         
-        $this->session->set_flashdata('retorno', $retorno);
-        redirect('/fotos/');
+        $this->show_gallery();
+        
+        $this->index();
+    }
+    
+    public function show_gallery(){
+                
+        if(!$this->id_menu ){            
+            return FALSE;
+        }
+        
+        if($this->id_categoria){            
+            $query = $this->fotografias->get_gallery($this->id_categoria);            
+            $this->html['gallery'] = $this->load->view('admin/gallery',array('query'=>$query),TRUE);
+            return TRUE;
+        }        
+        return FALSE;
+    }
+    
+    public function delete_fotografia($id_fotografia){
+        $this->load->model('fotografias');
+        $this->fotografias->delete($id_fotografia);
+        $this->id_categoria = $this->fotografias->get_id_cateogoria();
+        
+        $query = $this->fotografias->get_gallery($this->id_categoria);            
+        $this->html['gallery'] = $this->load->view('admin/gallery',array('query'=>$query),TRUE);
+        
+        $this->index();
+        
     }
     
 }

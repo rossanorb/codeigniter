@@ -25,7 +25,14 @@ $(document).ready(function(){
              $('#select_menu label').remove();
         }
         
-    }); 
+    });
+    
+    $('.excluir_fotografia').on('click',function(){
+        var id_fotografias = $(this).attr('id');
+        console.log(id_fotografias);
+        $(window.document.location).attr('href','/fotos/delete_fotografia/'+id_fotografias);
+    });
+    
 });
 
 $(document).on('change', '.btn-file :file', function() {

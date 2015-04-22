@@ -1,4 +1,4 @@
-<?php //$retorno = $this->session->flashdata('retorno');
+<?php 
 //echo "<pre>";
 //print_r(@$retorno);
 //echo "</pre>";

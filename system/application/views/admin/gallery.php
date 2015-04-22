@@ -19,12 +19,14 @@
     <ul class="row">
     <?php 
     foreach ($query as $row ):
+        if( isset($row->src)):
     ?>
         <li class="col-sm-3">
             <span class="glyphicon glyphicon-trash excluir_fotografia" id="<?php echo $row->id_fotografia; ?>"> </span>        
-            <img class="img-responsive" name="<?php echo $row->fotografia_nome; ?>" src="<?php echo FOTOS.'/'.$row->src; ?>">
+            <img class="img-responsive" name="<?php echo $row->fotografia_nome; ?>" src="<?php echo base_url(). FOTOS.$row->src; ?>">
         </li>
     <?php
+        endif;
     endforeach;
     ?>
     </ul>

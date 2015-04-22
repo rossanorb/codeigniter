@@ -3,11 +3,20 @@
 class Fotografias extends Model{
     
     private $name = 'Fotografias';
-        
+    private $id_categoria;  
+
     public function __construct() {
         parent::Model();
     }
     
+    public function  get_id_cateogoria(){
+        return $this->id_categoria;
+    }
+    
+    public function set_id_categoria($id_categoria){
+       $this->id_categoria = $id_categoria;
+    }
+
     public function add(array $dados){        
         $this->db->insert($this->name,array(
             'id_categoria'=>$dados['id_categoria'],
@@ -35,6 +44,21 @@ class Fotografias extends Model{
             $query = $this->db->get();
             return $query->result();
         }
+    }
+    
+    public function delete($id_fotografia){
+        if( filter_var($id_fotografia, FILTER_VALIDATE_INT) ){
+            $query = $this->db->get_where($this->name, array('id_'.$this->name => $id_fotografia));            
+            $row = $query->result()[0];            
+            $this->set_id_categoria($row->id_categoria); 
+                    
+            if(unlink(FOTOS.$row->src)){                
+                $this->db->delete($this->name, array('id_fotografias' => $row->id_fotografias));                
+            }else{                
+                return FALSE;
+            }
+        }
+        return FALSE;
     }
     
 }
