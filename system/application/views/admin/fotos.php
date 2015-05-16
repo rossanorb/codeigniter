@@ -1,9 +1,3 @@
-<?php 
-//echo "<pre>";
-//print_r(@$retorno);
-//echo "</pre>";
-?>
-
 <div class="container">
 
     <div class="container-fluid admin">
@@ -36,14 +30,7 @@
                                         <option value="<?php echo $row->id_menu; ?>"><?php echo $row->nome; ?></option>
                                         <?php endforeach;?>
                                     </select>                                    
-                                    <div id="select_menu">
-<!--                                        <label for="menu">categoria:</label>
-                                        <select class="form-control" name="categoria" id="categoria">
-                                            <option value="0">selecione</option>
-                                            <option value="1">categoria</option>
-                                            <option value="2">menu</option>
-                                        </select>-->
-                                    </div>
+                                    <div id="select_menu"><!--conteúdo dinâmico--></div>
                                 </div>                                    
                             </div>
 
