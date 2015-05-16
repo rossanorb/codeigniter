@@ -14,6 +14,7 @@
                     <ul class="nav nav-tabs">
                         <li role="presentation"><a href="/admin/">Menus</a></li>
                         <li role="presentation" class="active"><a href="/fotos/">Fotos</a></li>
+                        <li role="presentation"><a href="/galeria/">Galeria</a></li>
                     </ul>
                 </div>            
             </div>
