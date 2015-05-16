@@ -46,7 +46,6 @@ class Admin extends Controller{
         $html['select'] = $this->tipo->get();
          
          // lista menu/categoria
-        $this->load->model('menu');
         $html['lista_menu'] =$this->menu->get();
          
         $html['javascripts'] =  array(JS.'modal.js',JS.'admin.js'); 
