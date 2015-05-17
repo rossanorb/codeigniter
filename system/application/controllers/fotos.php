@@ -13,7 +13,6 @@ class Fotos extends Controller{
         $this->load->model('menu');
          
         // lista menu
-        $this->load->model('menu');
         $this->html['select_menu'] = $this->menu->get();
         
         $this->html['javascripts'] = array(PLUGINS.'photo-gallery.js',JS.'fotos.js' ); 
