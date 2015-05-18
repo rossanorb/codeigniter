@@ -47,13 +47,14 @@ class Fotografias extends Model{
     }
     
     public function delete($id_fotografia){
-        if( filter_var($id_fotografia, FILTER_VALIDATE_INT) ){
+        if( filter_var($id_fotografia, FILTER_VALIDATE_INT) ){            
             $query = $this->db->get_where($this->name, array('id_'.$this->name => $id_fotografia));            
             $row = $query->result()[0];            
             $this->set_id_categoria($row->id_categoria); 
                     
             if(unlink(FOTOS.$row->src)){                
-                $this->db->delete($this->name, array('id_fotografias' => $row->id_fotografias));                
+                $this->db->delete($this->name, array('id_fotografias' => $row->id_fotografias));
+                return TRUE;
             }else{                
                 return FALSE;
             }
