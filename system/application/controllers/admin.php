@@ -25,19 +25,6 @@ class Admin extends Controller{
             foreach ($_POST['edit'] as $id_menu => $name){
                 $this->menu->update(array('id_menu'=>$id_menu, 'nome'=>$name));
             }
-            
-            /*
-            foreach ($_POST['edit'] as $id_menu => $name){                
-                $tipo = $this->menu->getTipo( $id_menu );
-                if($tipo == 'menu'){ // se menu, possui categoria onde cada um possu seu próprio nome                    
-                    $this->menu->update(array('id_menu'=>$id_menu, 'nome'=>$name));
-                }else{
-                    $this->menu->update(array('id_menu'=>$id_menu, 'nome'=>$name));
-
-                }
-            }
-             */
-            
 
         }
         
