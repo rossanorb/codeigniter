@@ -1,22 +1,25 @@
 <?php
- foreach ($query as $row ){
-     if($row->tipo == 2 ){
-         //menu - pega nome da categoria do menu
-         $nome = $row->nome_categoria;
-     }else{
-         //categoria - pega nome do  menu
-         $nome = $row->menu_nome;         
-     }
- }
+if(isset($query)){
+    foreach ($query as $row ){
+        if($row->tipo == 2 ){
+            //menu - pega nome da categoria do menu
+            $nome = $row->nome_categoria;
+        }else{
+            //categoria - pega nome do  menu
+            $nome = $row->menu_nome;         
+        }
+    }
+}
 ?>
 
 <div class="cols-sm-12">
     <div class="page-header">
-      <h1><?php echo $nome ;?></h1>
+      <h1><?php echo isset($nome) ?  $nome : NULL ;?></h1>
     </div>
 </div>
 <div class="cols-sm-12">
     <ul class="row">
+    <?php if(isset($query)): ?>    
     <?php 
     foreach ($query as $row ):
         if( isset($row->src)):
@@ -29,6 +32,7 @@
         endif;
     endforeach;
     ?>
+    <?php endif; ?>     
     </ul>
 </div>    
     
@@ -40,3 +44,8 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+<script>    
+     $('.excluir_fotografia').on('click', excluir_foto_galeria);
+</script>    
