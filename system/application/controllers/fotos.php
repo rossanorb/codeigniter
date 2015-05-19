@@ -141,9 +141,6 @@ class Fotos extends Controller{
     }
     
     public function exibir_galeria($id_menu = 0, $id_categoria = 0){
-        echo "id_menu = $id_menu ";
-        echo "<br>";
-        echo "id_categoria = $id_categoria ";
         
         $this->load->helper('html');
         $this->load->model('menu');
