@@ -99,6 +99,8 @@ class Fotos extends Controller{
                         $retorno['msg'] = 'upload realizado com sucesso.';
                     }
                 
+            }else{
+                $retorno['error'] = $this->error;
             }
                 
         }else{
