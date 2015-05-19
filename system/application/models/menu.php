@@ -33,7 +33,10 @@ class Menu extends Model{
         $this->db->join('tipo','tipo.id_tipo = menu.id_tipo');
         $this->db->where('id_menu', $id_menu);        
         $query = $this->db->get();
-        return $query->result()[0]->nome;
+        if($query->num_rows > 0)        
+            return $query->result()[0]->nome;
+        else
+            return null;        
                 
     }
     
