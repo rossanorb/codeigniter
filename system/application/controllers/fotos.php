@@ -6,7 +6,7 @@ class Fotos extends Controller{
     private $dados;
     private $id_categoria;
     private $id_menu;    
-    private $html = array();    
+    private $html = array();
 
     public function index(){
         $this->load->helper('html');
@@ -116,24 +116,25 @@ class Fotos extends Controller{
     
     public function show_gallery(){
                 
-        if(!$this->id_menu ){            
+        if(!$this->id_menu ){
             return FALSE;
         }
         
         if($this->id_categoria){            
-            $query = $this->fotografias->get_gallery($this->id_categoria);            
+            $query = $this->fotografias->get_gallery($this->id_categoria);
             $this->html['gallery'] = $this->load->view('admin/gallery',array('query'=>$query),TRUE);
             return TRUE;
         }        
         return FALSE;
     }
     
-    public function delete_fotografia($id_fotografia){
+    public function delete_fotografia($id_fotografia, $id_menu = 0){
         $this->load->model('fotografias');
         $this->fotografias->delete($id_fotografia);
         $this->id_categoria = $this->fotografias->get_id_cateogoria();
-        
-        $query = $this->fotografias->get_gallery($this->id_categoria);            
+        $this->id_menu = $id_menu;
+
+        $query = $this->fotografias->get_gallery($this->id_categoria);
         $this->html['gallery'] = $this->load->view('admin/gallery',array('query'=>$query),TRUE);
         
         $this->index();
