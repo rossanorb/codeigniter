@@ -75,13 +75,19 @@
                                 </span>
                                 <input type="text" class="form-control" id="filename"  disabled="">
                             </div>
+                            
                     </div>
-                    <div class="col-sm-12 btn-submit"><button type="submit" class="btn btn-default">Upload</button></div>
+                    <div class="col-sm-12 btn-submit">
+                        <div class="form-group">
+                        <button type="submit" class="btn btn-default">Upload</button>
+                        <button type="gallery" class="btn btn-default">Exibir Galeria</button>
+                        </div>
+                    </div>
                 </div>                
             </div>
             </form>
             <div class="col-sm-4">
-                <img src="" id="foto-upload" width="200" style="display:none;" />
+                <img src="" id="foto-upload" width="200" style="display:none;" />                
             </div>            
         </div>
         <div class="row" >
