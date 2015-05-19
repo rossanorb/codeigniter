@@ -140,4 +140,52 @@ class Fotos extends Controller{
         
     }
     
+    public function exibir_galeria($id_menu = 0, $id_categoria = 0){
+        echo "id_menu = $id_menu ";
+        echo "<br>";
+        echo "id_categoria = $id_categoria ";
+        
+        $this->load->helper('html');
+        $this->load->model('menu');
+        $this->load->model('categoria');
+        $this->load->model('fotografias');
+        
+        $this->id_menu = $id_menu;
+        $this->id_categoria = $id_categoria;
+        
+        /* busca galeria de fotos */        
+        if($this->id_menu > 0 ){
+            //  categoria:
+            
+            // busca categoria se tiver apenas o id_menu
+            if($this->id_categoria == 0)  {
+                $this->id_categoria = $this->categoria->get_id( $this->id_menu );
+            }           
+                        
+            $query = $this->fotografias->get_gallery($this->id_categoria); 
+            $this->html['gallery'] = $this->load->view('admin/gallery',array('query'=>$query),TRUE);
+            
+        }
+        
+        
+        // lista menu
+        $this->html['select_menu'] = $this->menu->get();
+        $this->html['id_menu'] = $this->id_menu;
+        $this->html['id_categoria'] = $this->id_categoria;
+        
+        if(isset($this->id_menu)){
+            $this->html['tipo'] = $this->menu->getTipo($this->id_menu);
+            if($this->html['tipo']=='menu'){
+                $this->html['select_categoria'] = $this->categoria();
+                
+            }
+        }
+        
+        $this->html['javascripts'] = array(PLUGINS.'photo-gallery.js',JS.'fotos.js' ); 
+        $this->html['css'] =  array(link_tag(CSS.'fotos.css'));        
+        $this->html['body'] = $this->load->view('admin/fotos',$this->html,TRUE);        
+        $this->load->view('layouts/home',$this->html);         
+        
+    }
+    
 }

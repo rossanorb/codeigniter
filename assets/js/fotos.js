@@ -33,6 +33,24 @@ $(document).ready(function(){
         $(window.document.location).attr('href','/fotos/delete_fotografia/'+id_fotografias);
     });
     
+    $('#exibir_galeria').on('click',function(){
+        var id_menu = $('select#menu option:selected').val();
+        var id_categoria = $('select#categoria option:selected').val();
+                
+        if(id_categoria == null){
+            id_categoria = 0;
+        }
+
+        if(id_menu > 0){
+            $(window.document.location).attr('href','/fotos/exibir_galeria/'+id_menu+'/'+id_categoria);
+        }else{
+            alert('Selecione o menu');
+        }
+            
+       
+
+    });
+    
 });
 
 $(document).on('change', '.btn-file :file', function() {

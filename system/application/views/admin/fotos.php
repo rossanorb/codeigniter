@@ -23,10 +23,9 @@
             </div>
         </div>
 
-        <div id="painel" class="row">
-            <?php echo form_open_multipart('fotos/upload'); ?>
+        <div id="painel" class="row">            
             <div class="col-sm-8">
-
+                <?php echo form_open_multipart('fotos/upload'); ?>
                 <div class="row col-left">
                     <div class="col-sm-12">
                         <div class="row">
@@ -79,18 +78,17 @@
                     </div>
                     <div class="col-sm-12 btn-submit">
                         <div class="form-group">
-                        <button type="submit" class="btn btn-default">Upload</button>
-                        <button type="gallery" class="btn btn-default">Exibir Galeria</button>
+                        <button type="submit" class="btn btn-default">Upload</button>                        
                         </div>
                     </div>
                 </div>                
-            </div>
-            </form>
+                </form>
+            </div>            
             <div class="col-sm-4">
                 <img src="" id="foto-upload" width="200" style="display:none;" />                
             </div>            
         </div>
-        <div class="row" >
+        <div class="row" >            
             <div class="cols-sm-12" id="mensagem" >
                 <?php
                 if( isset($retorno['error']) ):
@@ -113,6 +111,13 @@
                 endif;
                 ?>
                 
+            </div>
+             <div class="col-sm-12 btn-submit">
+                 <div class="input-group">
+                <?php echo form_open('fotos/exibir_galeria'); ?>
+                     <button type="button" id="exibir_galeria" class="btn btn-default">Exibir Galeria</button>
+                 </form>
+                </div>
             </div>
         </div>
         <div class="row" id="painel_fotos" >
