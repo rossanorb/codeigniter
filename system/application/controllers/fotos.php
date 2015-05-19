@@ -14,6 +14,16 @@ class Fotos extends Controller{
          
         // lista menu
         $this->html['select_menu'] = $this->menu->get();
+        $this->html['id_menu'] = $this->id_menu;
+        $this->html['id_categoria'] = $this->id_categoria;
+        
+        if(isset($this->id_menu)){
+            $this->html['tipo'] = $this->menu->getTipo($this->id_menu);
+            if($this->html['tipo']=='menu'){
+                $this->html['select_categoria'] = $this->categoria();
+                
+            }
+        }
         
         $this->html['javascripts'] = array(PLUGINS.'photo-gallery.js',JS.'fotos.js' ); 
         $this->html['css'] =  array(link_tag(CSS.'fotos.css'));        
@@ -23,9 +33,20 @@ class Fotos extends Controller{
     
     public function categoria(){
         $this->load->model('categoria');
-        $query = $this->categoria->lista($_POST['id']);
-        $json['select'] = $this->load->view('admin/form/select_categoria',array('query'=>$query),TRUE);        
-        echo json_encode($json);
+        
+        if($this->input->post('id')!= NULL){
+             $this->id_menu =  $this->input->post('id');
+        }
+        
+        $query = $this->categoria->lista($this->id_menu);
+        $json['select'] = $this->load->view('admin/form/select_categoria',array('query'=>$query, 'id_categoria' => $this->id_categoria),TRUE);
+        
+        if($this->input->post('id')!= NULL){
+            echo json_encode($json);
+        }else{
+            $select = $json['select'];            
+            return $select;
+        }
     }
     
     private function do_upload(){
@@ -65,10 +86,11 @@ class Fotos extends Controller{
             
             
         }elseif($this->input->post('menu') && $this->input->post('categoria') == NULL ){
-            //  categoria
+            //  categoria            
+            
+            $this->id_categoria = $this->categoria->get_id( $this->input->post('menu') ); // busca categoria
+            
             if($this->do_upload()){
-                $this->id_categoria = $this->categoria->get_id( $this->input->post('menu') );
-                
                     if($this->id_categoria){
                         $this->fotografias->add(array(
                                     'id_categoria' => $this->id_categoria,

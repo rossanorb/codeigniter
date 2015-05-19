@@ -1,3 +1,12 @@
+<?php 
+//echo @$id_menu;
+//echo '<br>';
+//echo @$id_categoria;
+//echo '<br>';
+//echo @$tipo;
+
+?>
+
 <div class="container">
 
     <div class="container-fluid admin">
@@ -25,12 +34,26 @@
                                 <div class="form-group">
                                     <label for="menu">menu:</label> 
                                     <select id="menu" name="menu" class="form-control">
+                                        <?php if(!isset($id_menu)):  ?>
                                             <option value="0">selecione</option>
-                                        <?php  foreach($select_menu as $row):?> 
-                                        <option value="<?php echo $row->id_menu; ?>"><?php echo $row->nome; ?></option>
-                                        <?php endforeach;?>
-                                    </select>                                    
-                                    <div id="select_menu"><!--conteúdo dinâmico--></div>
+                                         <?php endif; ?>   
+                                        
+                                         <?php  foreach($select_menu as $row):?> 
+                                                <?php  if($row->id_menu == $id_menu):  ?>
+                                                    <option value="<?php echo $row->id_menu; ?>"><?php echo $row->nome; ?></option>
+                                                 <?php endif;  ?>     
+                                        <?php endforeach;?>    
+                                            
+                                         <?php  foreach($select_menu as $row):?> 
+                                                <?php  if($row->id_menu == $id_menu): continue; else: ?>
+                                                    <option value="<?php echo $row->id_menu; ?>"><?php echo $row->nome; ?></option>
+                                                 <?php endif;  ?>     
+                                        <?php endforeach;?>  
+                                    </select>
+                                    
+                                    <div id="select_menu">
+                                        <?php echo @$select_categoria; ?>
+                                    </div>
                                 </div>                                    
                             </div>
 
