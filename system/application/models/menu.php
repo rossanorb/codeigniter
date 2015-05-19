@@ -27,7 +27,7 @@ class Menu extends Model{
         return $query->result();        
     }
     
-    public function getTipo($id_menu){        
+    public function getTipo($id_menu){
         $this->db->select('tipo.id_tipo as id_tipo, tipo.nome');        
         $this->db->from($this->name);
         $this->db->join('tipo','tipo.id_tipo = menu.id_tipo');
