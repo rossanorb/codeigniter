@@ -29,8 +29,7 @@ $(document).ready(function(){
     
     $('.excluir_fotografia').on('click',function(){
         var id_fotografias = $(this).attr('id');
-        var id_menu = $('select#menu option:selected').val();
-        console.log(id_fotografias);
+        var id_menu = $('select#menu option:selected').val();        
         $(window.document.location).attr('href','/fotos/delete_fotografia/'+id_fotografias+'/'+id_menu);
     });
     
