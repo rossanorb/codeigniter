@@ -10,8 +10,7 @@ function getContentModal(data){
                     console.log(objeto);
                     categorias.push(objeto);
                 }
-            });            
-            //console.log( JSON.stringify(ocat)  );
+            });                        
             request(
                 data,
                 null,
@@ -20,14 +19,12 @@ function getContentModal(data){
             );
         });
 
-        $('#bt_categoria').bind('click',function(){
-            //console.log(data['query'][0]['id_menu']);
+        $('#bt_categoria').bind('click',function(){            
             request(data,null,null,'/admin/add_categoria/');
         });
 
         $('.editar_categoria').bind('click',function(){
-            var input = $(this).parent('li').find('input');
-            //console.log(input.attr('id'));
+            var input = $(this).parent('li').find('input');            
             input.addClass('editable');
             input.removeAttr('disabled');            
         });
@@ -48,7 +45,6 @@ function getContentModal(data){
 }
 
 function request(data,id_categoria,categorias,url){
-//function request(data,categorias,url){
         $.ajax({
             dataType : 'json',
             type     : 'post',
