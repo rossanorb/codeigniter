@@ -29,9 +29,6 @@ class Home extends Controller {
              foreach ($menus as $menu){
                  $dados = array();
                  
-                 //print nl2br("  {$menu->tipo} - {$menu->menu} - {$menu->id_menu} \n   ");
-                 
-                 
                  if($menu->tipo == 'categoria'){
                     $dados['id_menu'] = $menu->id_menu;
                     $dados['menu'] = $menu->menu;
@@ -42,8 +39,6 @@ class Home extends Controller {
                     $dados['submenus'] = $this->categoria->get_categorias($menu->id_menu);
                     $this->mnu .=   $this->load->view('site/submenu',$dados,TRUE);
                  }
-                 
-                 //unset($dados);
              }
              
         }
