@@ -36,7 +36,7 @@ define('FOPEN_READ_WRITE_CREATE', 				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT', 			'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 define('CSS','assets/css/');
-define('IMAGENS','assets/imagens/');
+define('IMAGENS','/assets/imagens/');
 define('FONTAWESOME','assets/font-awesome/css/');
 define('JS','assets/js/');
 define('PLUGINS','assets/plugins/');
