@@ -77,4 +77,31 @@ class Fotografias extends Model{
         return FALSE;
     }
     
+    public function get_by_id_categoria($id){
+            $this->db->select('
+                    fotografias.src as src,
+                    fotografias.nome as fotografia_nome,
+                    fotografias.id_fotografias as id_fotografia
+                    ')
+            ->from('categoria')
+            ->join('fotografias','fotografias.id_categoria = categoria.id_categoria')
+            ->where('categoria.id_categoria',$id);
+            $query = $this->db->get();
+            return $query->result();  
+    }
+    
+    public function get_by_id_menu($id){                 
+            $this->db->select('
+                    fotografias.src as src,
+                    fotografias.nome as fotografia_nome,
+                    fotografias.id_fotografias as id_fotografia
+                    ')
+            ->from('menu')
+            ->join('categoria','categoria.id_menu = menu.id_menu')
+            ->join('fotografias','fotografias.id_categoria = categoria.id_categoria')
+            ->where('menu.id_menu',$id);
+            $query = $this->db->get();
+            return $query->result();        
+    }
+
 }

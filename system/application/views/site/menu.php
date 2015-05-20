@@ -1,1 +1,1 @@
-<li><a href="menu/<?php echo $id_menu; ?>"><?php echo $menu; ?></a></li>
+<li><a href="/home/index/<?php echo $tipo.'/'.$id_menu; ?>"><?php echo $menu; ?></a></li>

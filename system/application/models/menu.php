@@ -97,6 +97,23 @@ class Menu extends Model{
         return $query->result();
     }
     
+    public function get_first_menu(){
+        $this->db->select(' 
+            menu.nome AS menu,
+            categoria.id_categoria AS id_categoria,
+            menu.id_menu AS id_menu,
+            categoria.nome AS categoria,
+            tipo.nome AS tipo            
+                ')
+            ->from($this->name)
+            ->join('categoria','categoria.id_menu = menu.id_menu','')
+            ->join('tipo','menu.id_tipo = tipo.id_tipo')
+            ->limit(1)    
+                ;
+        $query = $this->db->get();
+        return $query->result()[0];
+    }
+    
 
 }
 
