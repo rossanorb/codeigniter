@@ -65,7 +65,13 @@ class Admin extends Controller{
     
     public function delete_categoria(){
         $this->load->model('categoria');
-        $this->categoria->delete($_POST['id_categoria']);
+        $this->load->model('fotografias');
+        $id_categoria = $this->input->post('id_categoria');        
+        // exclui fotografias da categoria
+        $this->fotografias->set_id_categoria($id_categoria);
+        $this->fotografias->delete_by_categoria();        
+        // exclui categoria
+        $this->categoria->delete($id_categoria);
         $this->categoria();
     }
     
