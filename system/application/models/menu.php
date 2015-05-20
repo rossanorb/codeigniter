@@ -50,31 +50,39 @@ class Menu extends Model{
     
     
     public function delete($id){
-                        
-        $this->db->select('fotografias.id_fotografias, menu.id_menu, menu.nome as nome_menu, categoria.id_categoria,categoria.nome as nome_categoria, fotografias.src');
-        $this->db->from('menu');
-        $this->db->join('categoria', 'categoria.id_menu = menu.id_menu', 'left');
-        $this->db->join('fotografias','fotografias.id_categoria = categoria.id_categoria', 'left');
-        $query = $this->db->where('menu.id_menu',$id);
-        $query = $this->db->get();
+        if( filter_var($id, FILTER_VALIDATE_INT) ){                
+            $this->db->select('fotografias.id_fotografias, menu.id_menu, menu.nome as nome_menu, categoria.id_categoria,categoria.nome as nome_categoria, fotografias.src');
+            $this->db->from('menu');
+            $this->db->join('categoria', 'categoria.id_menu = menu.id_menu', 'left');
+            $this->db->join('fotografias','fotografias.id_categoria = categoria.id_categoria', 'left');
+            $query = $this->db->where('menu.id_menu',$id);
+            $query = $this->db->get();
 
-        foreach ($query->result() as $row){
-            $ids['fotografias'][$row->id_fotografias]  = $row->src;
-            $ids['categoria'][$row->id_categoria] = $row->nome_categoria;
-            $ids['menu'][$row->id_menu] = $row->nome_menu;
-        }
-
-        $this->db->trans_start();
-        
-        foreach ($ids as $tabela => $ids){
-            foreach ($ids as $id => $x){
-                $this->db->delete($tabela, array('id_'.$tabela => $id));                 
+            foreach ($query->result() as $row){
+                $ids['fotografias'][$row->id_fotografias]  = $row->src;
+                $ids['categoria'][$row->id_categoria] = $row->nome_categoria;
+                $ids['menu'][$row->id_menu] = $row->nome_menu;
             }
-        }
 
-        $this->db->trans_complete();
-        redirect('/admin');
-        
+            $this->db->trans_start();
+
+            foreach ($ids as $tabela => $ids){
+                foreach ($ids as $id => $value){
+
+                    if($tabela == 'fotografias'){
+                        if(unlink(FOTOS.$value)){ //exclui imagem
+                            $this->db->delete($tabela, array('id_'.$tabela => $id));
+                        }
+                    }else{
+                        $this->db->delete($tabela, array('id_'.$tabela => $id));
+                    }                               
+                }
+            }
+
+            $this->db->trans_complete();
+            return TRUE;
+        }
+        return FALSE;
     }
     
    

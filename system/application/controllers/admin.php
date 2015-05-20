@@ -45,6 +45,7 @@ class Admin extends Controller{
     public function delete($id){
        $this->load->model('menu');
        $this->menu->delete($id);
+       redirect('/admin');
     }
     
     public function categoria(){
