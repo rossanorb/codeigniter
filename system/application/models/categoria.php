@@ -50,4 +50,9 @@ class Categoria extends Model{
             return($query->result()[0]->id_categoria);
         }        
     }
+    
+    public function get_categorias($id_menu){
+        $query = $this->db->get_where($this->name, array('id_menu' => $id_menu));
+        return $query->result();        
+    }    
 }

@@ -85,7 +85,18 @@ class Menu extends Model{
         return FALSE;
     }
     
-   
+    public function get_menus(){
+         $this->db->select('
+             tipo.nome as tipo,
+             menu.id_menu as id_menu,
+             menu.nome as menu
+             ')
+             ->from('menu')
+             ->join('tipo','tipo.id_tipo = menu.id_tipo');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
 
 }
 
