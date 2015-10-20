@@ -86,11 +86,6 @@ class Admin extends Controller{
         }
         $this->categoria->update($lista);
         $this->categoria();
-        
-        
-//        foreach ($obj as $row){
-//            print nl2br(" categoria: {$row->id_categoria} \n nome: {$row->nome} \n\n ");
-//        }
 
     }
 }
